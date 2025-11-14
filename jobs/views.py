@@ -16,7 +16,8 @@ class JobListCreate(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         if serializer.is_valid():
             serializer.save(company=self.request.company)
-
+        else:
+            print(serializer.errors)
 class CreateUserView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
